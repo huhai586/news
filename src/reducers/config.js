@@ -1,34 +1,34 @@
 import { handleActions } from 'redux-actions';
-import { SUBMIT_CONFIG_REQUEST, SUBMIT_CONFIG_SUCCESS, SUBMIT_CONFIG_FAILURE } from '../constants/actions';
+import { GET_CATEGORY,GET_FETCH_TYPE } from '../constants/actions';
 
 import { merge } from 'lodash';
 
-
+let options = [
+    { value: '1', label: 'Published' },
+    { value: '0', label: 'UnPublished' }
+]
 const initialState = {
-  formData: null,
-  formResult: null,
-  formError: null
+
+    publishStatus:options,
+    category:[],
+    fetch_type:[],
+    source_option:{}
+
 };
 
 export default handleActions({
-  [SUBMIT_CONFIG_REQUEST]: (state, action) => {
+  [GET_CATEGORY]: (state, action) => {
     // do nothing
+      console.log("getcategory",action)
     return merge({}, state, {
-      formData: action.payload.params,
-      formResult: null,
-      formError: ""
+      category:action.payload.data
     });
   },
-  [SUBMIT_CONFIG_SUCCESS]: (state, action) => {
+  [GET_FETCH_TYPE]: (state, action) => {
     return merge({}, state, {
       formResult: action.payload,
       formError: ""
     });
-  },
-  [SUBMIT_CONFIG_FAILURE]: (state, action) => {
-    return merge({}, state, {
-      formResult: null,
-      formError: action.payload.msg
-    });
   }
+
 }, initialState);

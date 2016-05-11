@@ -1,13 +1,16 @@
 {
   "Demo": [
     {
-      "url": "/address",
-      "desc": "获取一些IP地址",
+      "url": "/category/list",
+      "desc": "获取分类列表成功",
       "mock":true,
       "res": {
         "code": 200,
-        "msg": "Get address successfully.",
-        "data|0-10": ["@ip()"]
+        "msg": "获取分类列表成功",
+        "data|0-10": [{
+          "categoryCode": "@integer(1, 100)",
+          "categoryName": "@cword(2,2)"
+        }]
       }
     },
     {

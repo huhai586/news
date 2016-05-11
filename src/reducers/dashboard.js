@@ -9,6 +9,7 @@ const initialState = {
 };
 
 //这是一个reducers
+//[GET_CHART_DATA_REQUEST]这类东西代表type
 export default handleActions({
   [GET_CHART_DATA_REQUEST]: (state, action) => {
     return merge({}, state, {

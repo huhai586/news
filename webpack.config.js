@@ -67,7 +67,7 @@ module.exports = {
         test: /\.less$/,
         include: /src(\\|\/)(containers|components)/,
         loader: ExtractTextPlugin.extract(
-          'style!' +
+          'style',
           'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!' +
           'postcss!' +
           'less?outputStyle=expanded&sourceMap&sourceMapContents'
@@ -124,7 +124,7 @@ module.exports = {
     inline: true,
     // api proxy
     proxy: {
-      '/api/*': {
+      '/cms/*': {
         target: 'http://127.0.0.1:2618',
         secure: false
       }

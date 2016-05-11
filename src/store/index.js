@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 
 // middleware
 import thunkMiddleware from 'redux-thunk';
-import asyncMiddleware from 'redux-async';
+import promiseMiddleware from 'redux-promise';
 import { syncHistory } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import { logger, delay } from '../middleware';
@@ -19,7 +19,7 @@ export default (initialState) => {
     // logger,
     delay,
     thunkMiddleware,
-    asyncMiddleware,
+      promiseMiddleware,
     syncHistory(browserHistory)
   )(create);
 

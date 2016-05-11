@@ -2,11 +2,12 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import DashboardModal from '../../components/DashboardModal';
+import SelectPublishStatus from '../../components/Articles/select-publish-status';
+import SelectCategory from '../../components/Articles/select-category';
 import BarCharts from '../../components/BarCharts';
-import dashboardActions from '../../actions/dashboard';
+import * as articlesActions from '../../actions/articles';
 import style from './style.less';
-
+console.log("css",style)
 var Dashboard = React.createClass({
   getInitialState() {
     return {
@@ -25,27 +26,28 @@ var Dashboard = React.createClass({
     });
   },
   componentDidMount() {
-    this.onGetChartData();
+    //this.onGetChartData();
+    //请求select数据
+
+    this.props.actions.getCategory();
   },
+
   render() {
-    var {actions, data} = this.props;
-    var {showModal} = this.state;
+    var {articles,actions,config} = this.props;
+    console.log('检测到render',this.props)
     return (
-      <div>
-        <h2>Dashboard</h2>
-        <Button bsStyle="success" onClick={this.onShowModal}><i className="icon icon-kehufuwu"></i> Show Modal</Button>
-        <DashboardModal showModal={showModal} onClose={this.onCloseModal}/>
-        <br/><br/>
-        <Button onClick={this.onGetChartData}><i className="glyphicon glyphicon-ice-lolly"></i> Reload Chart Data</Button>
-        <BarCharts ref="barCharts"/>
-      </div>
+        <div className={style.query} >
+          <SelectPublishStatus value={articles.query.publishStatus}
+            options={config.publishStatus} onChange={actions.changeStatus}/>
+        </div>
+
     );
   }
 });
 
 // connect action to props
-const mapStateToProps = (state) => ({data: state.dashboard});
-const mapDispatchToProps = (dispatch) => ({actions: bindActionCreators(dashboardActions, dispatch)});
+const mapStateToProps = (state) => ({articles: state.articles,config:state.config});
+const mapDispatchToProps = (dispatch) => ({actions: bindActionCreators(articlesActions, dispatch)});
 
 export default connect(
   mapStateToProps,

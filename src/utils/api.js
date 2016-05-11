@@ -50,6 +50,7 @@ const checkRespStatus = (respPromise) => {
 export default {
   getUser: (params) => request(API.GET_USER, params, METHOD.GET),
   saveConfig: (params) => request(API.SAVE_CONFIG, params, METHOD.PUT),
-  getChartData: (params) => request(API.GET_CHART_DATA, params, METHOD.POST)
+  getChartData: (params) => request(API.GET_CHART_DATA, params, METHOD.POST),
+  getCategory:(params) => request(API.GET_CATEGORY, params, METHOD.GET),
 };
 

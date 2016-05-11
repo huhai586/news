@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 import dashboard from './dashboard';
+import articles from './articles';
 import statistics from './statistics';
 import config from './config';
 
@@ -12,5 +13,6 @@ export default combineReducers({
   // custom reducers
   dashboard,
   statistics,
-  config
+  config,
+  articles
 })

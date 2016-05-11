@@ -11,7 +11,7 @@ var server = app.listen(port, function() {
   console.info('Mock server is listening at' + port);
 });
 
-const prefix = '/api';
+const prefix = '/cms';
 
 var api = {};
 var apiPath = path.join(__dirname, './api.json');
