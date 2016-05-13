@@ -2,11 +2,18 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import SelectPublishStatus from '../../components/Articles/select-publish-status';
-import SelectCategory from '../../components/Articles/select-category';
+import SelectCommon from '../../components/Articles/select-common';
+import SelectFetch from '../../components/Articles/select-fetch';
+import InputSearch from '../../components/Articles/input-search';
+import Datetimepicker from '../../components/Datetimepicker/index';
 import BarCharts from '../../components/BarCharts';
 import * as articlesActions from '../../actions/articles';
+import * as commonActions from '../../actions/common';
+import {INFO_TYPE,PUBLISH_STATUS,FETCH_TYPE,SOURCE_OPTION,KEY_WORD} from '../../constants/placeholder';
+
 import style from './style.less';
+
+let unionActions=Object.assign({},articlesActions,commonActions);
 console.log("css",style)
 var Dashboard = React.createClass({
   getInitialState() {
@@ -26,10 +33,25 @@ var Dashboard = React.createClass({
     });
   },
   componentDidMount() {
-    //this.onGetChartData();
     //请求select数据
+    this.props.actions.getCategory().then((res)=>{
+      //
+      if(res.payload.length!=0){
+        this.props.actions.changeCategory(res.payload[0].categoryCode
+        )
+      }
+    });
 
-    this.props.actions.getCategory();
+  },
+  queryNews:function(){
+    var query=this.props.articles.query;
+    console.log("查询参数为",query)
+    //检查是否都有值
+    //let status,categoryCode,uplevelType,sourceId,dateType,startDate,endDate,keywords,orderType;
+    //let params={
+    //  status
+    //}
+    //actions.queryNews(params)
   },
 
   render() {
@@ -37,8 +59,14 @@ var Dashboard = React.createClass({
     console.log('检测到render',this.props)
     return (
         <div className={style.query} >
-          <SelectPublishStatus value={articles.query.publishStatus}
-            options={config.publishStatus} onChange={actions.changeStatus}/>
+          <SelectCommon value={articles.query.publishStatus}
+            options={config.publishStatus} onChange={actions.changeStatus} placeholder={PUBLISH_STATUS}/>
+          <SelectCommon onChange={actions.changeCategory} multi={true} options={config.category} placeholder={INFO_TYPE} value={articles.query.categoryCode}/>
+          <SelectFetch optionsFetch={config.fetch_type} sourceOption={config.source_option} actions={actions} fetchTypeValue={articles.query.fetch_type} sourceOptionValue={articles.query.soucr_option}/>
+          <SelectCommon onChange={actions.changeTimeType} options={config.timeType}  value={articles.query.timeType}/>
+          <Datetimepicker dateTimeFrom={articles.query.time_from} dateTimeTo={articles.query.time_to} actions={actions}/>
+          <InputSearch placeholder={KEY_WORD} actions={actions}/>
+          <Button bsStyle="primary" onClick={this.queryNews}>Submit</Button>
         </div>
 
     );
@@ -47,7 +75,7 @@ var Dashboard = React.createClass({
 
 // connect action to props
 const mapStateToProps = (state) => ({articles: state.articles,config:state.config});
-const mapDispatchToProps = (dispatch) => ({actions: bindActionCreators(articlesActions, dispatch)});
+const mapDispatchToProps = (dispatch) => ({actions: bindActionCreators(unionActions, dispatch)});
 
 export default connect(
   mapStateToProps,

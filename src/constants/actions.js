@@ -14,7 +14,18 @@ export const SUBMIT_CONFIG_FAILURE = 'SUBMIT_CONFIG_FAILURE';
 
 //文章管理页面的action——name
 export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const CHANGE_CATEGORY = 'CHANGE_CATEGORY';
+
 export const GET_CATEGORY = 'GET_CATEGORY';
 export const GET_FETCH_TYPE = 'GET_FETCH_TYPE';
+export const CHANGE_FETCH_TYPE = 'CHANGE_FETCH_TYPE';
+
+export const GET_SOURCE_OPTION = 'GET_SOURCE_OPTION';
+export const CHANGE_SOURCE_OPTION = 'CHANGE_SOURCE_OPTION';
+export const CHANGE_TIME_TYPE = 'CHANGE_TIME_TYPE';
+export const SET_TIME_FROM = 'SET_TIME_FROM';
+export const SET_TIME_TO = 'SET_TIME_TO';
+export const SET_KEYWORD = 'SET_KEYWORD';
+export const QUERY_NEWS = 'QUERY_NEWS';
 
 

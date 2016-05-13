@@ -52,5 +52,8 @@ export default {
   saveConfig: (params) => request(API.SAVE_CONFIG, params, METHOD.PUT),
   getChartData: (params) => request(API.GET_CHART_DATA, params, METHOD.POST),
   getCategory:(params) => request(API.GET_CATEGORY, params, METHOD.GET),
+  getFetchType:(params) => request(API.GET_FETCH_TYPE, params, METHOD.GET),
+  getSourceOption:(params) => request(API.GET_SOURCE_OPTION, params, METHOD.GET),
+  queryNews:(params) => request(API.QUERY_NEWS, params, METHOD.GET),
 };
 
