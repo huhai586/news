@@ -1,5 +1,5 @@
 import { GET_FETCH_TYPE,GET_SOURCE_OPTION,CHANGE_FETCH_TYPE ,CHANGE_SOURCE_OPTION,
-    CHANGE_TIME_TYPE,SET_TIME_FROM,SET_TIME_TO,SET_KEYWORD,QUERY_NEWS} from '../constants/actions';
+    CHANGE_TIME_TYPE,SET_TIME_FROM,SET_TIME_TO,SET_KEYWORD,QUERY_NEWS,CHANGE_FILTER_TYPE,STORE_SELECTED} from '../constants/actions';
 import { createAction } from 'redux-actions';
 import API from '../utils/api';
 
@@ -18,4 +18,6 @@ export const setTimeFrom=createAction(SET_TIME_FROM);
 export const setTimeTo=createAction(SET_TIME_TO);
 export const storeKeyWord=createAction(SET_KEYWORD);
 export const queryNews=createAction(QUERY_NEWS,API.queryNews);
+export const changeFilterType=createAction(CHANGE_FILTER_TYPE);
+export const storeSelected=createAction(STORE_SELECTED);
 

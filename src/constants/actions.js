@@ -27,5 +27,7 @@ export const SET_TIME_FROM = 'SET_TIME_FROM';
 export const SET_TIME_TO = 'SET_TIME_TO';
 export const SET_KEYWORD = 'SET_KEYWORD';
 export const QUERY_NEWS = 'QUERY_NEWS';
+export const CHANGE_FILTER_TYPE = 'CHANGE_FILTER_TYPE';
+export const STORE_SELECTED = 'STORE_SELECTED';
 
 

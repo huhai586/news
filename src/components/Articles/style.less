@@ -20,3 +20,63 @@
         width:160px;
     }
 }
+
+.articles_list_header{
+    padding:10px;
+    padding-right: 0;
+    height: 56px;
+    border-bottom:1px solid #ccc;
+    :global{
+        .selectAll{
+            float: left;
+            line-height: 36px;
+            vertical-align: middle;
+            span{
+                padding-right: 1em;
+                cursor:pointer
+            }
+        }
+        .orderType{
+            float:right;
+        }
+    }
+
+
+}
+.articleSolo{
+    list-style-type: none;
+    border-bottom:1px solid #ccc;
+    padding:8px;
+    overflow: hidden;
+    &:hover{
+        background:#E8E8E8
+
+    }
+    :global{
+        .selctThis{
+            width:10%;
+            float:left;
+        }
+        .basicInfo{
+            width:70%;
+            float: left;
+            .readCount,.from{
+                padding-left: 1em;
+            }
+        }
+        .otherInfo{
+            width:20%;
+            float: left;
+            span{
+                padding:0 0.5em;
+            }
+        }
+    }
+}
+.articles_list_body{
+    :global{
+        ul{
+            padding:0
+        }
+    }
+}
